@@ -46,7 +46,6 @@ my_each_with_index(grocery_list) {|m| puts "Please get #{m}"}
 
 def my_select(arr)
   new_array = []
-    len = arr.length
     for val in arr do  
       unless val.is_a? Integer
         new_array.push(val)
@@ -58,16 +57,32 @@ def my_select(arr)
   my_select(new_list)
   
 
-  def my_all(arr)
-      loop do 
-        if arr == Integer
-          p true
-        else
-          p false
+def my_all(arr)
+    a=0
+    len = arr.length
+    for f in arr do 
+        if f.is_a? Integer
+            a+=1
         end
-        break if true || false
-      end
+    end   
+    if a == len
+        p true
+    else
+        p false
     end
-      new_element = [1, 3, "a"]
-    my_all(new_element)
+end
+    new_element = [1, 3, 2]
+my_all(new_element)
+
+def my_any(arr)
+    for f in arr do 
+        if f.is_a? Integer
+            puts true
+        end
+    end  
+    puts false 
+end
+    new_element = ["a", "b"]
+my_all(new_element)
+
     
