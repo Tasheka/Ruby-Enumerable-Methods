@@ -110,3 +110,15 @@ def my_map(arr)
 end
     new_element = ['a', 'g', 'h', 'i']
     my_map(new_element)
+
+def my_inject(arr)
+    sum = 0
+    my_each(arr) do |value|
+        sum += value
+    end
+    p sum
+end
+
+new_values = [1, 3, 5, 7]
+    my_inject(new_values)
+
