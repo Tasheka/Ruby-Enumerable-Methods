@@ -47,19 +47,16 @@ grocery_list = ["banana", "plum", "chocolate", "toiletries"]
 my_each_with_index(grocery_list) {|m| puts "Please get #{m}"}
 
 
-
 def my_select(arr)
-new_array = []
-  len = arr.length
-
-  arr.my_each(arr) do |arr|
-
-    if arr != 0..9
-    new_array.push[arr]
+  new_array = []
+    len = arr.length
+    for val in arr do  
+      unless val.is_a? Integer
+        new_array.push(val)
+      end
     end
+    p new_array
   end
-end
-  new_list = ["a", "b", "c", 3]
-
-my_select(new_list) {|m| puts "hello #{m}"}
-
+    new_list = ["a", "b", "c", 3]
+  my_select(new_list)
+  
