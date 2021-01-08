@@ -1,10 +1,7 @@
 public def my_each(arr)
-
     for name in arr do
-
         yield (name)
-
-    end
+end
 
 end
 
@@ -60,3 +57,17 @@ def my_select(arr)
     new_list = ["a", "b", "c", 3]
   my_select(new_list)
   
+
+  def my_all(arr)
+      loop do 
+        if arr == Integer
+          p true
+        else
+          p false
+        end
+        break if true || false
+      end
+    end
+      new_element = [1, 3, "a"]
+    my_all(new_element)
+    
