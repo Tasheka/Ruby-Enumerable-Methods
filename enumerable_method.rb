@@ -1,8 +1,12 @@
 public def my_each(arr)
-  arr.each do |name|
-    yield name
-  end
+    for name in arr do
+        yield (name)
+    end
 end
+
+names = ["Amy", "John", "Joe"]
+my_each(names) {|a| puts "Hello #{a}"}
+
 
 names = %w[Amy John Joe]
 
@@ -81,5 +85,18 @@ end
     new_element = ["a", "g" "c"]
 my_none(new_element)
 
-
+def my_count(arr)
+  count = 0
+  my_each(arr) do |num|
+    count+= 1
+    if arr
+      count += 1 if arr == num
+    else
+      count+= 1  
+    end
+  end
+  puts count
+end
+    new_element = ["a", "g", "c", "d"]
+    my_count(new_element)
     
