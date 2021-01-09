@@ -100,3 +100,13 @@ end
     new_element = ["a", "g", "c", "d"]
     my_count(new_element)
     
+
+def my_map(arr)
+  new_array = []
+  my_each(arr) do |item|
+    new_array.push(item.upcase)
+  end
+  p new_array
+end
+    new_element = ['a', 'g', 'h', 'i']
+    my_map(new_element)
