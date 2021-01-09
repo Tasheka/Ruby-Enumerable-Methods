@@ -17,7 +17,7 @@ def my_each_with_index(arr)
 
   i = 1
 
-  arr.each do |item|
+  my_each(arr) do |item|
     yield item if i <= len && i.even?
 
     i += 1
