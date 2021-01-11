@@ -31,19 +31,20 @@ module Enumerable
     p new_array
   end
   
-def my_all(arr)
-    a=0
-    len = arr.length
-    for f in arr do 
-        if f.is_a? Integer
-            a+=1
-        end
-    end   
-    if a == len
-        p true
-    else
-        p false
+def my_all?
+  conclusion = true
+
+  for value in self do 
+    if !block_given? &&  !value
+      conclusion = false
+    elsif block_given? && !yield(value)
+      conclusion = false
+    elsif (value.instance_of?(Class) || value.instance_of?(Module)) && !yield(value)
+      conclusion  = false
+    elsif  value.instance_of?(Regexp)  && !yield(value)
     end
+  end
+  p conclusion
 end
 
 def my_any(arr)
@@ -77,7 +78,6 @@ def my_count
   p count
 end
 
-
 def my_map(arr)
   new_array = []
   my_each(arr) do |item|
@@ -95,4 +95,3 @@ def my_inject(arr)
 end
 
 end
-
