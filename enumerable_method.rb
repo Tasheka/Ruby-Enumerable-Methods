@@ -47,43 +47,47 @@ def my_all?
   p conclusion
 end
 
-# def my_any(arr)
-#     for f in arr do 
-#         if f.is_a? Integer
-#             puts true
-#         end
-#     end  
-#     puts false 
-# end
-
 def my_any?
   conclusion = false
   for value in self do 
-    if !block_given? &&  !value
+    if !block_given? &&  value
       conclusion = true
     elsif block_given? && yield(value)
       conclusion = true
-    elsif (value.instance_of?(Class) || value.instance_of?(Module)) && !yield(value)
+    elsif (value.instance_of?(Class) || value.instance_of?(Module)) && yield(value)
       conclusion  = true
-    elsif  value.instance_of?(Regexp)  && !yield(value)
+    elsif  value.instance_of?(Regexp)  && yield(value)
     end
   end
   p conclusion
 end
 
-def my_none(arr)
-    output = true
-    my_each(arr) do |num|
-        if num.is_a? Integer
-            output = false
-        end
-    end  
-    if output == false
-        p false
-    else
-        p true
+def my_none?
+  conclusion = true
+  for value in self do 
+    if !block_given? &&  value
+      conclusion = false
+    elsif block_given? && yield(value)
+      conclusion = false
+    elsif (value.instance_of?(Class) || value.instance_of?(Module)) && yield(value)
+      conclusion  = false
+    elsif  value.instance_of?(Regexp)  && yield(value)
     end
+  end
+  p conclusion
 end
+    #output = true
+    #my_each(arr) do |num|
+     #   if num.is_a? Integer
+      #      output = false
+       # end
+    #end  
+    #if output == false
+     #   p false
+    #else
+     #   p true
+    #end
+#end
 
 def my_count
   count = 0

@@ -20,6 +20,9 @@ numbers.my_all? { |number| number.is_a? Integer }
 numbers  = [9, 10, 12, "Tasheka", "lilo"]
 numbers.my_any? { |number| number.is_a? Integer }
 
+#Example for the my_none method
+words  = ["Tasheka", "lilo", "cat"]
+words.my_none? { |number| number.is_a? Integer }
 
 #Example for the my_count method
 counting_elements = ["a", "g", "c", "d", "a"]
