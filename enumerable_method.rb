@@ -1,32 +1,24 @@
-public def my_each(arr)
-    for name in arr do
-        yield (name)
+module Enumerable 
+
+  def my_each
+    p enum_for(:my_each) unless block_given?
+    
+    for value in self do
+      yield (value)
     end
-end
-
-names = ["Amy", "John", "Joe"]
-my_each(names) {|a| puts "Hello #{a}"}
-
-
-names = %w[Amy John Joe]
-
-my_each(names) { |a| puts "Hello #{a}" }
-
-def my_each_with_index(arr)
-  len = arr.length
-
-  i = 1
-
-  my_each(arr) do |item|
-    yield item if i <= len && i.even?
-
-    i += 1
+    p self
   end
-end
 
-grocery_list = %w[banana plum chocolate toiletries]
-
-my_each_with_index(grocery_list) { |m| puts "Please get #{m}" }
+  def my_each_with_index
+    p enum_for(:my_each_with_index) unless block_given?
+    
+    index = 0
+    for value in self do
+      yield(value, index)
+      index += 1
+    end
+    p self
+  end
 
 def my_select(arr)
   new_array = []
@@ -37,10 +29,7 @@ def my_select(arr)
     end
     p new_array
 end
-    new_list = ["a", "b", "c", 3]
-  my_select(new_list)
   
-
 def my_all(arr)
     a=0
     len = arr.length
@@ -55,8 +44,6 @@ def my_all(arr)
         p false
     end
 end
-    new_element = [1, 3, 2]
-my_all(new_element)
 
 def my_any(arr)
     for f in arr do 
@@ -66,8 +53,6 @@ def my_any(arr)
     end  
     puts false 
 end
-    new_element = ["a", "b"]
-my_all(new_element)
 
 def my_none(arr)
     output = true
@@ -82,8 +67,6 @@ def my_none(arr)
         p true
     end
 end
-    new_element = ["a", "g" "c"]
-my_none(new_element)
 
 def my_count(arr)
   count = 0
@@ -97,9 +80,6 @@ def my_count(arr)
   end
   puts count
 end
-    new_element = ["a", "g", "c", "d"]
-    my_count(new_element)
-    
 
 def my_map(arr)
   new_array = []
@@ -108,8 +88,6 @@ def my_map(arr)
   end
   p new_array
 end
-    new_element = ['a', 'g', 'h', 'i']
-    my_map(new_element)
 
 def my_inject(arr)
     sum = 0
@@ -119,6 +97,4 @@ def my_inject(arr)
     p sum
 end
 
-new_values = [1, 3, 5, 7]
-    my_inject(new_values)
-
+end
