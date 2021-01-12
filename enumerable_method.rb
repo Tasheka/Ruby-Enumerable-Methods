@@ -97,10 +97,10 @@ module Enumerable
 
   def my_inject(*input)
     p LocalJumpError unless block_given? && !input.nil?
-    if input.length == 1 && input[0].is_a?(Integer)
+    if !input[0].nil? && input[1].nil?
       input1 = input[0]
       input2 = input[0]
-    elsif input.length > 1 && input[0].is_a?(Integer) && input[1].is_a?(Integer)
+    elsif !input[0].nil? && !input[0].nil?
       input1 = input[0]
       input2 = input[1]
     end
