@@ -97,13 +97,39 @@ def my_count
   p count
 end
 
-def my_map(arr)
+# def my_map(arr)
+#   new_array = []
+#   my_each(arr) do |item|
+#     new_array.push(item.upcase)
+#   end
+#   p new_array
+# end
+
+def my_map
+  p enum_for(:my_map) unless block_given?
+
   new_array = []
-  my_each(arr) do |item|
-    new_array.push(item.upcase)
+  for value in self do
+    if self.instannce_of?(Proc)
+      new_array.push(self.call(value))
+    else
+      new_array.push(yield(value))
+    end
+    
   end
   p new_array
 end
+
+# my_each do |i|
+#   result.push(input_proc.call(i)) if input_proc.is_a?(Proc)
+#   result.push(yield i) if block_given? && input_proc.nil?
+# end
+# if value.instannce_of? (Proc)
+#   new_array.push(self.call(value))
+# else
+#   new_array.push(yield(value))
+# end
+
 
 def my_inject(arr)
     sum = 0

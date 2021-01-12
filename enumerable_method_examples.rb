@@ -27,3 +27,7 @@ words.my_none? { |number| number.is_a? Integer }
 #Example for the my_count method
 counting_elements = ["a", "g", "c", "d", "a"]
 counting_elements.my_count {|counting| counting}
+
+# Example for the my_map method
+
+# p(elements.my_map { |i| i * i }) #=> [1, 4, 9, 16]
