@@ -2,24 +2,27 @@
 module Enumerable
   def my_each
     return enum_for(:my_each) unless block_given?
+
     for value in self do
       yield value
     end
-    return self
+    self
   end
 
   def my_each_with_index
     return enum_for(:my_each_with_index) unless block_given?
+
     index = 0
     for value in self do
       yield(value, index)
       index += 1
     end
-    return self
+    self
   end
 
   def my_select
     return enum_for(:my_select) unless block_given?
+
     new_array = []
     for value in self do
       new_array.push(value) if yield value
@@ -95,6 +98,7 @@ module Enumerable
 
   def my_map(proc = nil)
     return enum_for(:my_map) unless block_given?
+
     new_array = []
     if proc
       for value in self do
@@ -110,6 +114,7 @@ module Enumerable
 
   def my_inject(*input)
     return LocalJumpError unless block_given? && !input.nil?
+    
     if !input[0].nil? && input[1].nil?
       input1 = input[0]
       input2 = input[0]
