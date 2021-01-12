@@ -1,5 +1,5 @@
 # Examples
- require './enumerable_method'
+ #require './enumerable_method'
 
 # Example for the my_each method
 # names = %w[ 'Amy', 'John', 'Joe' ]

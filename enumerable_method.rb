@@ -27,7 +27,7 @@ module Enumerable
     for value in self do
       new_array.push(value) if yield value
     end
-    return new_array
+    new_array
   end
 
   def my_all?(arg = nil)
@@ -43,7 +43,7 @@ module Enumerable
         conclusion = false
       end
   end
-    return conclusion
+    conclusion
   end
 
   def my_any?(arg = nil)
@@ -59,7 +59,7 @@ module Enumerable
         conclusion = true
       end
   end
-    p conclusion
+    conclusion
   end
 
   def my_none?(arg = nil)
@@ -75,7 +75,7 @@ module Enumerable
         conclusion = false
       end
     end
-    return conclusion
+    conclusion
   end
 
   def my_count(arg = nil)
@@ -89,7 +89,6 @@ module Enumerable
         count += 1 if arg == value
       end
     else
-      for value in self do
         count += 1
       end
     end
@@ -109,12 +108,12 @@ module Enumerable
         new_array.push(yield(value))
     end
     end
-    return new_array
+    new_array
   end
 
   def my_inject(*input)
     return LocalJumpError unless block_given? && !input.nil?
-    
+
     if !input[0].nil? && input[1].nil?
       input1 = input[0]
       input2 = input[0]
@@ -136,5 +135,4 @@ module Enumerable
   def multiply_els(array)
     array.my_inject { |value1, value2| value1 * value2 }
   end
-
 end
