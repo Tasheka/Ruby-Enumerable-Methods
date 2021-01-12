@@ -32,47 +32,72 @@ module Enumerable
 
   def my_all?(arg = nil)
     conclusion = true
-    for value in self do
-      if !block_given? && !value
-        conclusion = false
-      elsif block_given? && !yield(value)
-        conclusion = false
-      elsif (value.instance_of?(Class) || value.instance_of?(Module)) && !value.is_a?(arg)
-        conclusion = false
-      elsif value.instance_of?(Regexp) && !arg.match(value)
-        conclusion = false
+    if block_given?
+      for value in self do
+        conclusion = false unless yield(value)
       end
-  end
+    elsif !block_given?
+      for value in self do
+        conclusion =  false if value == true
+      end
+    end
+    if arg.instance_of?(Class)
+      for value in self do
+        conclusion = false if !arg==value
+      end
+    elsif arg.instance_of?(Regexp)
+      for value in self do
+         conclusion = false if !arg.match?(value)
+      end
+    end
     conclusion
   end
 
   def my_any?(arg = nil)
     conclusion = false
-    for value in self do
-      if !block_given? && value
-        conclusion = true
-      elsif block_given? && yield(value)
-        conclusion = true
-      elsif (value.instance_of?(Class) || value.instance_of?(Module)) && value.is_a?(arg)
-        conclusion = true
-      elsif arg.instance_of?(Regexp) && arg.match(value)
-        conclusion = true
+    if block_given?
+      for value in self do
+        conclusion = true if yield(value)
       end
-  end
+    elsif !block_given?
+      for value in self do
+        conclusion =  true if value == true || value.nil?
+      end
+    end
+    if arg.instance_of?(Class)
+      for value in self do
+        conclusion = true if arg==value
+      end
+    elsif arg.instance_of?(Regexp)
+      for value in self do
+         conclusion = true if arg.match? (value)
+      end
+    else
+      for value in self do
+        conclusion = true if arg ==  value
+      end
+    end
     conclusion
   end
 
   def my_none?(arg = nil)
     conclusion = true
-    for value in self do
-      if !block_given? && value
-        conclusion = false
-      elsif block_given? && yield(value)
-        conclusion = false
-      elsif (arg.instance_of?(Class) || value.instance_of?(Module)) && value.is_a?(arg)
-        conclusion = false
-      elsif arg.instance_of?(Regexp) && arg.match(value)
-        conclusion = false
+    if block_given?
+      for value in self do
+        conclusion = false if yield(value)
+      end
+    elsif !block_given?
+      for value in self do
+        conclusion =  false if value == true
+      end
+    end
+    if arg.instance_of?(Class)
+      for value in self do
+        conclusion = false if value.instance_of? arg
+      end
+    elsif arg.instance_of?(Regexp)
+      for value in self do
+         conclusion = false if arg.match?(value)
       end
     end
     conclusion
