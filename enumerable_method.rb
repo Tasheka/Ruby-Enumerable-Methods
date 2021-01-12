@@ -20,15 +20,16 @@ module Enumerable
     p self
   end
 
-def my_select(arr)
-  new_array = []
-    for val in arr do  
-      unless val.is_a? Integer
-        new_array.push(val)
-      end
+
+  def my_select
+    p enum_for(:my_select) unless block_given?
+    
+    new_array = []
+    for value in self do
+      new_array.push(value) if yield value
     end
     p new_array
-end
+  end
   
 def my_all(arr)
     a=0
@@ -98,3 +99,4 @@ def my_inject(arr)
 end
 
 end
+
