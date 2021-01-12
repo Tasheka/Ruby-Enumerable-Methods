@@ -110,7 +110,7 @@ def my_map
 
   new_array = []
   for value in self do
-    if self.instannce_of?(Proc)
+    if self.instance_of?(Proc)
       new_array.push(self.call(value))
     else
       new_array.push(yield(value))

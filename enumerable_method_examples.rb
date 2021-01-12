@@ -25,8 +25,11 @@ words  = ["Tasheka", "lilo", "cat"]
 words.my_none? { |number| number.is_a? Integer }
 
 #Example for the my_count method
-counting_elements = ["a", "g", "c", "d", "a"]
-counting_elements.my_count {|counting| counting}
+new_letters = ['a', 'g', 'h', 'i']
+new_letters.my_map  {|letter| letter.upcase}
+elements = [1, 2, 3, 4]
+elements.my_map{ proc |i| i * i }
+                                                                              
 
 # Example for the my_map method
 
