@@ -105,38 +105,42 @@ end
 #   p new_array
 # end
 
-def my_map
+def my_map(proc = nil)
   p enum_for(:my_map) unless block_given?
 
   new_array = []
-  for value in self do
-    if self.instance_of?(Proc)
-      new_array.push(self.call(value))
-    else
+  if proc
+    for value in self do
+      new_array.push(proc.call(value))
+    end
+  else
+    for value in self do
       new_array.push(yield(value))
     end
-    
   end
   p new_array
 end
 
-# my_each do |i|
-#   result.push(input_proc.call(i)) if input_proc.is_a?(Proc)
-#   result.push(yield i) if block_given? && input_proc.nil?
-# end
-# if value.instannce_of? (Proc)
-#   new_array.push(self.call(value))
-# else
-#   new_array.push(yield(value))
-# end
 
+def my_inject(*input)
+  p LocalJumpError unless block_given? && !input.nil?
 
-def my_inject(arr)
-    sum = 0
-    my_each(arr) do |value|
-        sum += value
+ if input.length ==  1 && input[0].is_a?(Integer)
+    input1 = input[0]
+    input2 = input[0]
+  elsif input.length > 1 && input[0].is_a?(Integer) && input[1].is_a?(Integer)
+    input1 = input[0]
+    input2 = input[1]
+  end
+  if input2
+    for value in self do
+    input2.send.call(input1, value)
     end
-    p sum
+  elsif !input2
+    for value in self do
+      yield(input1,value)
+    end
+  end
 end
-
+  
 end

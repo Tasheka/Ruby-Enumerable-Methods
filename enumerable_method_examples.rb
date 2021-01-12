@@ -28,9 +28,12 @@ words.my_none? { |number| number.is_a? Integer }
 new_letters = ['a', 'g', 'h', 'i']
 new_letters.my_map  {|letter| letter.upcase}
 elements = [1, 2, 3, 4]
-elements.my_map{ proc |i| i * i }
+elements.my_map{ |i| i * i }
                                                                               
 
-# Example for the my_map method
+#Example for the my_map method
+new_letters = ['a', 'g', 'h', 'i']
+new_letters.my_map  {|letter| letter.upcase}
 
-# p(elements.my_map { |i| i * i }) #=> [1, 4, 9, 16]
+elements = ["a", "b", "c"]
+elements.my_map proc{|value| value.upcase}
