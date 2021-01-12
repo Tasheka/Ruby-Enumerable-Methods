@@ -12,3 +12,6 @@ grocery_list.my_each_with_index {|grocery, index| p "Please get #{grocery}" if i
 letters = ["a", "b", "c", 3]
 letters.my_select {|letter| letter.is_a? String}
 
+#Example for the my_count method
+counting_elements = ["a", "g", "c", "d", "a"]
+counting_elements.my_count {|counting| counting}

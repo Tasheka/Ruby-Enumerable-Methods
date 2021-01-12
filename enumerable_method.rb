@@ -69,18 +69,14 @@ def my_none(arr)
     end
 end
 
-def my_count(arr)
+def my_count
   count = 0
-  my_each(arr) do |num|
-    count+= 1
-    if arr
-      count += 1 if arr == num
-    else
-      count+= 1  
-    end
+  for value in self do
+    count += 1 if yield(value)
   end
-  puts count
+  p count
 end
+
 
 def my_map(arr)
   new_array = []
