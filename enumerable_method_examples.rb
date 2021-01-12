@@ -1,5 +1,5 @@
 # Examples
-# require './enumerable_method'
+ require './enumerable_method'
 
 # Example for the my_each method
 # names = %w[ 'Amy', 'John', 'Joe' ]
@@ -37,3 +37,11 @@
 
 # elements = %w['a', 'b', 'c']
 # elements.my_map proc{|value| value.upcase}
+
+(%w[ant bear cat].my_any? { |word| word.length >= 3 }) #=> true
+(%w[ant bear cat].my_any? { |word| word.length >= 4 }) #=> true
+ [nil, true, 99].my_any?                              #=> true
+ [].my_any?                                           #=> false
+ %w[ant bear cat].my_any?(/d/)                        #=> false
+ [nil, true, 99].my_any?(Integer)                     #=> true
+ %w[ant bear cat].my_any?('bear')                     #=> true
