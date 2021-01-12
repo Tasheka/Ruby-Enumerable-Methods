@@ -13,8 +13,13 @@ letters = ["a", "b", "c", 3]
 letters.my_select {|letter| letter.is_a? String}
 
 #Example for the my_all method
-words  = ["ant", "bear", "cat"]
-words.my_all? { |word| word.length >= 3 }
+numbers  = [9, 10, 12, 20]
+numbers.my_all? { |number| number.is_a? Integer }
+
+#Example for the my_any method
+numbers  = [9, 10, 12, "Tasheka", "lilo"]
+numbers.my_any? { |number| number.is_a? Integer }
+
 
 #Example for the my_count method
 counting_elements = ["a", "g", "c", "d", "a"]
