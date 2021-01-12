@@ -5,6 +5,10 @@ A program that manually performs the enumerable methods: each, each_with_index, 
 # Built With:
 Ruby
 
+# Getting Started
+ 
+ To get a copy up and running, simply run ruby enumerable_method_examples.rb
+
 
 # Authors
 
