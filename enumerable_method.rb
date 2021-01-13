@@ -78,20 +78,16 @@ module Enumerable
     conclusion
   end
 
-  def my_count(arg = nil)
-    count = 0
+  def my_count(param = nil)
+    c = 0
     if block_given?
-      for value in self do
-        count += 1 if yield(value)
-      end
-    elsif arg
-      for value in self do
-        count += 1 if arg == value
-      end
+      to_a.my_each { |item| c += 1 if yield(item) }
+    elsif !block_given? && param.nil?
+      c = to_a.length
     else
-      count += 1
+      c = to_a.my_select { |item| item == param }.length
     end
-    p count
+    c
   end
 
   def my_map(proc = nil)
@@ -110,28 +106,20 @@ module Enumerable
     new_array
   end
 
-  def my_inject(*input)
-    return LocalJumpError unless block_given? && !input.nil?
-
-    if !input[0].nil? && input[1].nil?
-      input1 = input[0]
-      input2 = input[0]
-    elsif !input[0].nil? && !input[0].nil?
-      input1 = input[0]
-      input2 = input[1]
+  def my_inject(initial = nil, sym = nil)
+    if (!initial.nil? && sym.nil?) && (initial.is_a?(Symbol) || initial.is_a?(String))
+      sym = initial
+      initial = nil
     end
-    if input2
-      for value in self do
-        input2.send.call(input1, value)
+    if !block_given? && !sym.nil?
+      to_a.my_each { |item| initial = initial.nil? ? item : initial.send(sym, item) }
+    else
+      to_a.my_each { |item| initial = initial.nil? ? item : yield(initial, item) }
     end
-    elsif !input2
-      for value in self do
-        yield(input1, value)
-    end
-    end
+    initial
   end
+end
 
-  def multiply_els(array)
-    array.my_inject { |value1, value2| value1 * value2 }
-  end
+def multiply_els(arr)
+  arr.my_inject(1, '*')
 end
