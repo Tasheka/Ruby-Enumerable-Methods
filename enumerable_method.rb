@@ -36,7 +36,7 @@ module Enumerable
         conclusion = false
       elsif (value.instance_of?(Class) || value.instance_of?(Module)) && !yield(value)
         conclusion = false
-      elsif  value.instance_of?(Regexp)  && !yield(value)
+      elsif value.instance_of?(Regexp) && !yield(value)
       end
   end
     p conclusion
@@ -45,13 +45,13 @@ module Enumerable
   def my_any?
     conclusion = false
     for value in self do
-      if !block_given? &&  value
+      if !block_given? && value
         conclusion = true
       elsif block_given? && yield(value)
         conclusion = true
       elsif (value.instance_of?(Class) || value.instance_of?(Module)) && yield(value)
         conclusion = true
-      elsif  value.instance_of?(Regexp)  && yield(value)
+      elsif value.instance_of?(Regexp) && yield(value)
       end
   end
     p conclusion
@@ -66,7 +66,7 @@ module Enumerable
         conclusion = false
       elsif (value.instance_of?(Class) || value.instance_of?(Module)) && yield(value)
         conclusion = false
-      elsif  value.instance_of?(Regexp)  && yield(value)
+      elsif value.instance_of?(Regexp) && yield(value)
       end
   end
     p conclusion
@@ -97,7 +97,7 @@ module Enumerable
 
   def my_inject(*input)
     p LocalJumpError unless block_given? && !input.nil?
-    if input.length ==  1 && input[0].is_a?(Integer)
+    if input.length == 1 && input[0].is_a?(Integer)
       input1 = input[0]
       input2 = input[0]
     elsif input.length > 1 && input[0].is_a?(Integer) && input[1].is_a?(Integer)
@@ -110,7 +110,7 @@ module Enumerable
     end
     elsif !input2
       for value in self do
-        yield(input1,value)
+        yield(input1, value)
     end
     end
   end
