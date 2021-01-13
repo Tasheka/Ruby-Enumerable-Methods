@@ -43,11 +43,11 @@ module Enumerable
     end
     if arg.instance_of?(Class)
       for value in self do
-        conclusion = false if !arg==value
+        conclusion = false if !arg == value
       end
     elsif arg.instance_of?(Regexp)
       for value in self do
-         conclusion = false if !arg.match?(value)
+        conclusion = false unless arg.match?(value)
       end
     end
     conclusion
@@ -61,20 +61,20 @@ module Enumerable
       end
     elsif !block_given?
       for value in self do
-        conclusion =  true if value == true || value.nil?
+        conclusion = true if value == true || value.nil?
       end
     end
     if arg.instance_of?(Class)
       for value in self do
-        conclusion = true if arg==value
+        conclusion = true if arg == value
       end
     elsif arg.instance_of?(Regexp)
       for value in self do
-         conclusion = true if arg.match? (value)
+        conclusion = true if arg.match? value
       end
     else
       for value in self do
-        conclusion = true if arg ==  value
+        conclusion = true if arg == value
       end
     end
     conclusion
@@ -97,7 +97,7 @@ module Enumerable
       end
     elsif arg.instance_of?(Regexp)
       for value in self do
-         conclusion = false if arg.match?(value)
+        conclusion = false if arg.match?(value)
       end
     end
     conclusion
