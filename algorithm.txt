@@ -1,0 +1,9 @@
+define a method #my_each to interate through an array and output each value to a code block
+define a method called #my_each_with_index to iterate through an array to output a variable(s) with a particular index
+define a method called #my_select to iterate through an array and output the new array that passes the condition (filtering)
+define a method called #my_all to interate through an array to return a boolean. It returns false if all the element do not meet the requirement and vice versa
+define a method called #my_any to interate through an array to return a boolean. It returns false if any of the element do not meet the requirement and vice versa
+define a method called #my_none to interate through an array to return a boolean. It returns true if none of the element meet the requirement and vice versa
+define a method called #my_count to interate through an array. It returns the lenght of the array.
+define a method caled #my_map to iterate through an array and changes/transform the element accorging to the instruction and output the new array.
+define a method called #my_inject which takes in an array and output a single value base on a condition.
