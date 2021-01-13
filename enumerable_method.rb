@@ -89,8 +89,7 @@ module Enumerable
         count += 1 if arg == value
       end
     else
-        count += 1
-      end
+      count += 1
     end
     p count
   end
